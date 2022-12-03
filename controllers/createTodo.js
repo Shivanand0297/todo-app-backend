@@ -2,7 +2,7 @@ const Todo = require("../models/todos")
 
 exports.createTodo = async (req, res)=>{
     try {
-        const {title} = req.body;
+        const {title, task} = req.body;
         if(!title){
             res.status(401).json({
                 success: false, 
@@ -10,7 +10,7 @@ exports.createTodo = async (req, res)=>{
             })
         }
         // creating todo title entry in the db
-        const todo = await Todo.create({title: title})
+        const todo = await Todo.create({title, task})
         res.status(201).json({
             success: true, 
             message: "Todo created successfully",
