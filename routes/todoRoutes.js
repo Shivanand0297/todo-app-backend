@@ -7,6 +7,7 @@ const { deleteTodo } = require("../controllers/deleteTodo");
 const { editTask } = require("../controllers/editTask");
 const { editTodo } = require("../controllers/editTodo");
 const { getTodos } = require("../controllers/getTodos");
+const { getTodo } = require("../controllers/getTodo")
 const { home } = require("../controllers/home");
 const router = express.Router();
 
@@ -18,4 +19,5 @@ router.put("/editTodo/:id", editTodo)
 router.patch("/editTask/:id", editTask)
 router.delete("/deleteTodo/:id", deleteTodo)
 router.delete("/deleteTask/:id", deleteTask)
+router.get("/getTodo/:id", getTodo)
 module.exports = router
