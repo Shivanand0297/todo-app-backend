@@ -9,6 +9,7 @@ const { editTodo } = require("../controllers/editTodo");
 const { getTodos } = require("../controllers/getTodos");
 const { getTodo } = require("../controllers/getTodo")
 const { home } = require("../controllers/home");
+const { search } = require("../controllers/search");
 const router = express.Router();
 
 router.get("/", home)
@@ -20,4 +21,5 @@ router.patch("/editTask/:id", editTask)
 router.delete("/deleteTodo/:id", deleteTodo)
 router.delete("/deleteTask/:id", deleteTask)
 router.get("/getTodo/:id", getTodo)
+router.get("/search", search)
 module.exports = router
