@@ -11,17 +11,17 @@ exports.search = async (req, res) => {
     }
 
     // getting searched todo in the database
-    const unFilteredTodos = await Todo.find({
+    const searchedTodos = await Todo.find({
       $or: [{ title: new RegExp(search, "i") }, { task: new RegExp(search, "i") }],
     });
 
-    if(!unFilteredTodos){
+    if(!searchedTodos){
         res.send("searched todo returned falsy value")
     }
     res.status(201).json({
         success: true, 
         message: "searched result", 
-        unFilteredTodos
+        searchedTodos
     })
 
   } catch (error) {
