@@ -5,7 +5,9 @@ const todoModel = new Schema({
         type: String, 
         required: [true, "Title is required"]
     },
-    task: [String]
-})
+    task: [String],
+},{
+    timestamps: true
+ })
 
 module.exports = mongoose.model("todo", todoModel)
