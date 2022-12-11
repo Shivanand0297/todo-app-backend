@@ -10,11 +10,12 @@ const { getTodos } = require("../controllers/getTodos");
 const { getTodo } = require("../controllers/getTodo")
 const { home } = require("../controllers/home");
 const { search } = require("../controllers/search");
+const Auth = require("../middleware/auth");
 const router = express.Router();
 
 router.get("/", home)
-router.post("/createTodo", createTodo)
-router.get("/getTodos", getTodos)
+router.post("/createTodo", Auth, createTodo)
+router.get("/getTodos", Auth, getTodos)
 router.post("/createTask/:id", createTask)
 router.put("/editTodo/:id", editTodo)
 router.patch("/editTask/:id", editTask)
