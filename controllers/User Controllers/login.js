@@ -10,7 +10,7 @@ exports.login = async (req, res) =>{
 
         // validating input
         if(!email || !password){
-            res.status(402).send("Email and Password are required to login")
+           return res.status(402).send("Email and Password are required to login")
         }
 
         // checking for user in database
@@ -36,7 +36,7 @@ exports.login = async (req, res) =>{
                 expires: new Date(Date.now() + 3 * 24 * 60 * 60 *1000),  // mili seconds
                 httpOnly: true  //can be accessed by server only
             }
-            res.status(200).cookie("token", token, options).json({
+          return res.status(200).cookie("token", token, options).json({
                 success: true,
                 message: "You are Successfully logged in",
                 token, 
@@ -44,11 +44,11 @@ exports.login = async (req, res) =>{
             })
 
         }
-            res.status(402).send("User not found, Email or password is incorrect")
+          return res.status(402).send("User not found, Email or password is incorrect")
 
     } catch (error) {
         console.log(error);
-        res.status(402).send(error.message)
+       return res.status(402).send(error.message)
     }
 }
 
