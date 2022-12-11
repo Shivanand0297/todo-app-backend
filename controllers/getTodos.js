@@ -3,7 +3,9 @@ const Todo = require("../models/todos")
 exports.getTodos = async (req, res)=>{
     try {
         // getting all the stored todos
-        const todos = await Todo.find();
+        const todos = await Todo.find({
+            user: req.user.id,
+        });
         // sorting based on date
         const {sortTodo} = req.body;    // taking sort button input
         if(sortTodo){
