@@ -9,13 +9,13 @@ exports.register = async (req, res) =>{
 
         // validating the input
         if(!firstname || !lastname || !email || !password){
-            res.status(401).send("all fields are required to create a user")
+           return res.status(401).send("all fields are required to create a user")
         }
         
         // checking for already existing user
         const existingUser = await User.findOne({email})
         if(existingUser){
-            req.status(401).send("user already present in the database, please login")
+            return res.status(401).send("user already present in the database, please login")
         }
 
         // encrypting the password before storing into database
@@ -43,14 +43,14 @@ exports.register = async (req, res) =>{
         // removing password from user before sending response
         user.password = undefined
         user.token = token;
-        res.status(201).json({
+       return res.status(201).json({
             success: true,
             message: "user created Successfully",
             user
         })
         
     } catch (error) {
-        res.status(402).json({
+        return res.status(402).json({
             success: false,
             message: error.message,
             status: "Failed to create user"
