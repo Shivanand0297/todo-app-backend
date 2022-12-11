@@ -14,13 +14,13 @@ const Auth = require("../middleware/auth");
 const router = express.Router();
 
 router.get("/", home)
-router.post("/createTodo", Auth, createTodo)
-router.get("/getTodos", Auth, getTodos)
-router.post("/createTask/:id", createTask)
-router.put("/editTodo/:id", editTodo)
-router.patch("/editTask/:id", editTask)
-router.delete("/deleteTodo/:id", deleteTodo)
-router.delete("/deleteTask/:id", deleteTask)
-router.get("/getTodo/:id", getTodo)
-router.get("/search", search)
+router.post("/api/createTodo", Auth, createTodo)
+router.get("/api/getTodos", Auth, getTodos)
+router.post("/api/createTask/:id", Auth, createTask)
+router.put("/api/editTodo/:id", editTodo)
+router.patch("/api/editTask/:id", editTask)
+router.delete("/api/deleteTodo/:id", deleteTodo)
+router.delete("/api/deleteTask/:id", deleteTask)
+router.get("/api/getTodo/:id", getTodo)
+router.get("/api/search", search)
 module.exports = router
