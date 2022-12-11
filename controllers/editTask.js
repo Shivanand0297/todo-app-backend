@@ -1,7 +1,11 @@
-const Todo = require("../models/todos")
+const Todo = require("../models/todos");
+const Users = require("../models/Users");
 
 exports.editTask = async (req, res)=>{
     try {
+        // getting the user by userid
+        const user = await Users.findById(req.user.id);
+
         // grabbing the todo
         const todo = await Todo.findById(req.params.id);
 
@@ -21,7 +25,7 @@ exports.editTask = async (req, res)=>{
 
         // updating the task in the array
         todo.task[taskArrayIndex] = updatedTask;
-
+        todo.user = user.id;
         // saving the todo
         await todo.save();
         res.status(201).json({
