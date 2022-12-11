@@ -1,13 +1,25 @@
 const mongoose = require("mongoose")
 const {Schema} = mongoose;
-const todoModel = new Schema({
-    title: {
-        type: String, 
-        required: [true, "Title is required"]
+const todoModel = new Schema(
+    {
+        title: {
+            type: String, 
+            required: [true, "Title is required"]
+        },
+        task: [String],
+        isCompleted: {
+            type: Boolean,
+            default: false,
+        },
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: users,
+            required: [true, "User ID is  required to create a todo"],
+        }
     },
-    task: [String],
-},{
-    timestamps: true
- })
+    {
+        timestamps: true
+    }
+)
 
 module.exports = mongoose.model("todo", todoModel)
