@@ -9,7 +9,7 @@ exports.getTodos = async (req, res)=>{
         // sorting based on date
         const {sortTodo} = req.body;    // taking sort button input
         if(sortTodo){
-            const sortedTodos = await Todo.find().sort({updatedAt: -1})
+            const sortedTodos = await Todo.find({user: req.user.id,}).sort({updatedAt: -1})
             res.status(200).json({
                 success: true, 
                 message: "These are the all sorted todos",
