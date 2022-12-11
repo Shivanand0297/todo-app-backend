@@ -1,4 +1,5 @@
-const Todo = require("../models/todos")
+const Todo = require("../models/todos");
+const Users = require("../models/Users");
 
 exports.createTodo = async (req, res)=>{
     try {
@@ -9,8 +10,15 @@ exports.createTodo = async (req, res)=>{
                 message: "Title is required"
             })
         }
+        // finding the user by id to create task
+        const user = await Users.findById(req.user.id)
+
         // creating todo title entry in the db
-        const todo = await Todo.create({title, task})
+        const todo = await Todo.create({
+            title, 
+            task,
+            user: user.id
+        })
         res.status(201).json({
             success: true, 
             message: "Todo created successfully",
