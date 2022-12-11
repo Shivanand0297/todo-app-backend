@@ -10,6 +10,6 @@ const userRoutes = express.Router()
 
 userRoutes.post("/api/register", register)
 userRoutes.post("/api/login", login)
-userRoutes.post("/api/logout",logout)
+userRoutes.get("/api/logout",logout)
 
 module.exports = userRoutes
