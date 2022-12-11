@@ -10,6 +10,8 @@ const cors = require("cors")
 // connecting with the database before starting the database
 require("./config/dbConnect").dbConnect()
 
+// importing cookie parser
+const cookieParser = require("cookie-parser")
 // bringing routes
 const todoRoutes = require("./routes/todoRoutes")
 const userRoutes = require("./routes/userRoutes")
