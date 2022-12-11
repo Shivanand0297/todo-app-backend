@@ -1,7 +1,11 @@
 const Todo = require("../models/todos")
+const Users = require("../models/Users")
 
 exports.createTask = async (req, res)=>{
     try {
+        // getting user to create task into
+        const user = await Users.findById(req.user.id)
+
         // first grabing the todo in which task is to be created
         const todo = await Todo.findById(req.params.id)
 
@@ -14,7 +18,7 @@ exports.createTask = async (req, res)=>{
         
         // appending the task in the task array of the above todo
         todo.task.push(task)
-
+        todo.user = user.id
         // saving the todo
         await todo.save();
 
