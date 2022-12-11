@@ -12,6 +12,7 @@ require("./config/dbConnect").dbConnect()
 
 // bringing routes
 const todoRoutes = require("./routes/todoRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 const corsOptions = {
     origin: "http://localhost:3000"
@@ -26,5 +27,6 @@ app.use(express.urlencoded({extended: true}))
 
 // routes
 app.use("/", todoRoutes)
+app.use("/", userRoutes)
 
 module.exports = app
