@@ -1,7 +1,11 @@
-const Todo = require("../models/todos")
+const Todo = require("../models/todos");
+const Users = require("../models/Users");
 
 exports.deleteTask = async (req, res)=>{
     try {
+        // getting the user by id
+        const user = await Users.findById(req.user.id)
+
         // grabbing the todo
         const todo = await Todo.findById(req.params.id);
 
@@ -18,6 +22,9 @@ exports.deleteTask = async (req, res)=>{
             console.log("task index is not number");
             res.send("task index is not number")
         }
+
+        // adding user id in the todo's user
+        todo.user = user.id;
 
         // deleting the task in the array
         todo.task.splice(taskArrayIndex, 1)
