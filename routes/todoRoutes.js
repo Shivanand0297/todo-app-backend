@@ -1,15 +1,15 @@
 const express = require("express");
 // importing all the controllers
-const { createTask } = require("../controllers/createTask");
-const { createTodo } = require("../controllers/createTodo");
-const { deleteTask } = require("../controllers/deleteTask");
-const { deleteTodo } = require("../controllers/deleteTodo");
-const { editTask } = require("../controllers/editTask");
-const { editTodo } = require("../controllers/editTodo");
-const { getTodos } = require("../controllers/getTodos");
-const { getTodo } = require("../controllers/getTodo")
-const { home } = require("../controllers/home");
-const { search } = require("../controllers/search");
+const { createTask } = require("../controllers/Todo Controllers/createTask");
+const { createTodo } = require("../controllers/Todo Controllers/createTodo");
+const { deleteTask } = require("../controllers/Todo Controllers/deleteTask");
+const { deleteTodo } = require("../controllers/Todo Controllers/deleteTodo");
+const { editTask } = require("../controllers/Todo Controllers/editTask");
+const { editTodo } = require("../controllers/Todo Controllers/editTodo");
+const { getTodos } = require("../controllers/Todo Controllers/getTodos");
+const { getTodo } = require("../controllers/Todo Controllers/getTodo")
+const { home } = require("../controllers/Todo Controllers/home");
+const { search } = require("../controllers/Todo Controllers/search");
 const Auth = require("../middleware/auth");
 const router = express.Router();
 

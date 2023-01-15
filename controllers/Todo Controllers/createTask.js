@@ -1,5 +1,5 @@
-const Todo = require("../models/todos")
-const Users = require("../models/Users")
+const Todo = require("../../models/todos")
+const Users = require("../../models/Users")
 
 exports.createTask = async (req, res)=>{
     try {
