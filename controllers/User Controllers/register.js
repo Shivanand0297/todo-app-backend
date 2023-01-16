@@ -22,7 +22,7 @@ exports.register = async (req, res) =>{
         const encryptedPassword = await bcrypt.hash(password, 10)
 
         // finally creating the user in the database
-        const user  = User.create({
+        const user  = await User.create({
             firstname,
             lastname,
             email,
@@ -50,7 +50,7 @@ exports.register = async (req, res) =>{
         })
         
     } catch (error) {
-        return res.status(402).json({
+        return res.status(401).json({
             success: false,
             message: error.message,
             status: "Failed to create user"
