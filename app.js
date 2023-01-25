@@ -5,7 +5,7 @@ require("dotenv").config()
 const express = require("express")
 
 // initializing cors for enabling cross server access
-const cors = require("cors")   
+const cors = require("cors")
 
 // connecting with the database before starting the database
 require("./config/dbConnect").dbConnect()
@@ -16,17 +16,18 @@ const cookieParser = require("cookie-parser")
 const todoRoutes = require("./routes/todoRoutes")
 const userRoutes = require("./routes/userRoutes")
 
-const corsOptions = {
-    origin: "http://localhost:3000"
-}
-
 const app = express()
 
 // middleware
-app.use(cors(corsOptions))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(
+    cors({
+        origin: "http://localhost:4000/",
+        credentials: true,
+    })
+);
 
 // routes
 app.use("/", todoRoutes)

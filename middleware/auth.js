@@ -15,7 +15,7 @@ const Auth = (req, res, next) =>{
         console.log("decodeToken:",decodeToken);
     
         // adding another property in the req object to store decodeToken
-        req.user = decodeToken    
+        req.user = decodeToken
     } catch (error) {
         console.log(error.message);
         res.send("invalid token")
